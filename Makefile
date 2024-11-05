@@ -6,14 +6,14 @@
 #    By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 17:02:45 by andcarva          #+#    #+#              #
-#    Updated: 2024/11/05 18:12:03 by andcarva         ###   ########.fr        #
+#    Updated: 2024/11/05 18:38:04 by andcarva         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= libftprintf.a
 CC= cc
 CFLAGS= -Wall -Wextra -Werror -g
-LIBFT_DIR= Libft
+LIBFT_DIR= libft
 INCLUDE_DIR= includes
 SRC_DIR= src
 OBJ_DIR= obj
@@ -26,16 +26,19 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	echo "Creating library $(NAME)"
-	@make -C $(Libft)
+	@make -C $(LIBFT_DIR)
 	@ar rcs $@ $?
 
 %.o: %.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -I $(INCLUDE_DIR) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 	
-clean: 
-	echo "Removing $(OBJ)"
-	@make clean -C $(LIBFT_DIR) 
-	@rm -rf $(OBJ)
+clean:
+	echo "Removing $(OBJ_DIR)"
+	@make clean -C $(LIBFT_DIR)
+	@rm -rf $(OBJ_DIR)
 	
 fclean: clean
 	echo "Removing $(NAME)"
