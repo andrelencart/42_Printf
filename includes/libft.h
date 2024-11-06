@@ -6,7 +6,7 @@
 /*   By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:49:25 by andcarva          #+#    #+#             */
-/*   Updated: 2024/11/05 17:31:56 by andcarva         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:48:18 by andcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <stddef.h>
 # include <limits.h>
 # include <string.h>
+
+# define HEX_LB "0123456789abcdef"
+# define HEX_UPB "0123456789ABCDEF"
 
 typedef struct s_list
 {
@@ -50,9 +53,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t len);
 void	*ft_memmove(void *dest, const void *src, size_t len);
 void	*ft_memset(void *ptrmem, int c, size_t len);
 void	ft_putchar_fd(char c, int fd);
-void	ft_putchar(int c);
 void	ft_putstr_fd(char *s, int fd);
-void	ft_putstr(char *str);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	**ft_split(char const *s, char c);

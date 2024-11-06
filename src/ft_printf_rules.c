@@ -5,24 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 15:34:27 by andcarva          #+#    #+#             */
-/*   Updated: 2024/11/05 17:53:35 by andcarva         ###   ########.fr       */
+/*   Created: 2024/11/06 13:08:36 by andcarva          #+#    #+#             */
+/*   Updated: 2024/11/06 18:56:42 by andcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-#include "Libft/libft.h"
+#include "ft_printf.h"
 
-void	ft_printf_rules(const char *str, va_list list)
+int	ft_printf_rules(char spec, va_list list)
 {
-	int	i;
+	int	printed;
 
-	i = 0;
-	if (str[i + 1] == 'c')
-		ft_putchar(va_arg(list, int));
-	else if (str[i + 1] == 's')
-		ft_putstr(va_arg(list, char *));
-	else if (str[i + 1] == 'p')
-		ft
-			
+	printed = 0;
+	if (spec == 'c')
+		printed = ft_putchartf(va_arg(list, int));
+	else if (spec == 's')
+		printed = ft_putstrtf(va_arg(list, char *));
+	else if (spec == 'p')
+		printed = 
+	else if (spec == 'd' || spec == 'i')
+		printed = ft_putnbrtf(va_arg(list, int));
+	else if (spec == 'u')
+		printed = ft_putunnbr(va_arg(list, unsigned int));
+	else if (spec == 'x')
+		printed = 
+	else if (spec == 'X')
+		printed = 
+	else if (spec == '%')
+		printed = ft_percentage(va_arg(list, int));
+	return (printed);
 }

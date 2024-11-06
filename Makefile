@@ -6,7 +6,7 @@
 #    By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 17:02:45 by andcarva          #+#    #+#              #
-#    Updated: 2024/11/05 18:38:04 by andcarva         ###   ########.fr        #
+#    Updated: 2024/11/06 14:11:00 by andcarva         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ OBJ_DIR= obj
 OBJ= $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 SRC= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
-SRC_FILES= ft_printf.c ft_printf_rules.c \
+SRC_FILES= ft_printf.c ft_printf_rules.c ft_ptf_func.c ft_ptf_hexfunc.c \
+			ft_ptf_decfunc.c \
 
 all: $(NAME)
 

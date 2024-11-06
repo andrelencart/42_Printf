@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_ptf_hexfunc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 13:10:31 by andcarva          #+#    #+#             */
-/*   Updated: 2024/11/06 13:11:38 by andcarva         ###   ########.fr       */
+/*   Created: 2024/11/06 13:55:45 by andcarva          #+#    #+#             */
+/*   Updated: 2024/11/06 19:16:43 by andcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *str, ...)
+int	ft_putnbrbase(unsigned int nbr, char *base)
 {
-	int			i;
-	va_list		arg;
-	int			print;
+	int	result;
+	int	len;
 
-	va_start(arg, str);
-	i = 0;
-	print = 0;
-	if (!str)
-		return (-1);
-	while (str[i])
+	len = ft_strlen(base);
+	if (nbr >= 10)
 	{
-		if (str[i++] == '%')
-			print += ft_printf_rules(str, arg);
-		else
-			print += ft_putchartf(str[i]);
-		i++;
+		ft_putnbrbase(nbr / len, base);
+		ft_putnbrbase(nbr % len, base);
 	}
-	va_end(arg);
-	return (print);
+	else
+	{
+		result = nbr + '0';
+		write(1, &result, 1);
+	}
+	return (result);
+}
+
+int	ft_putptr()
+{
+	
 }

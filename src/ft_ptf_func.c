@@ -1,36 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_ptf_func.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 13:10:31 by andcarva          #+#    #+#             */
-/*   Updated: 2024/11/06 13:11:38 by andcarva         ###   ########.fr       */
+/*   Created: 2024/11/06 12:24:27 by andcarva          #+#    #+#             */
+/*   Updated: 2024/11/06 19:06:42 by andcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *str, ...)
+int	ft_putchartf(int c)
 {
-	int			i;
-	va_list		arg;
-	int			print;
+	write(1, &c, 1);
+	return (1);
+}
 
-	va_start(arg, str);
+/* void	ft_putstr(char *str)
+{
+	int	i;
+
 	i = 0;
-	print = 0;
-	if (!str)
-		return (-1);
-	while (str[i])
+	while (str && str[i])
 	{
-		if (str[i++] == '%')
-			print += ft_printf_rules(str, arg);
-		else
-			print += ft_putchartf(str[i]);
+		write(1, &str[i], 1);
 		i++;
 	}
-	va_end(arg);
-	return (print);
+} */
+
+int	ft_putstrtf(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
+}
+
+int	ft_percentage(int c)
+{
+	write(1, "%", 1);
+	return (1);
 }
