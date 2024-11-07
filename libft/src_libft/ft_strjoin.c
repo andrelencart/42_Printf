@@ -6,7 +6,7 @@
 /*   By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:35:49 by andcarva          #+#    #+#             */
-/*   Updated: 2024/11/05 11:54:47 by andcarva         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:55:32 by andcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t		j;
 
 	if (!s1 || !s2)
-		return NULL;
+		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2);
 	s3 = malloc(sizeof(char const) * (len + 1));
 	if (!s3)

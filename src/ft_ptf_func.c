@@ -6,7 +6,7 @@
 /*   By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:24:27 by andcarva          #+#    #+#             */
-/*   Updated: 2024/11/06 19:06:42 by andcarva         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:33:21 by andcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_putstrtf(char *str)
 	return (i);
 }
 
-int	ft_percentage(int c)
+int	ft_percentage(void)
 {
 	write(1, "%", 1);
 	return (1);

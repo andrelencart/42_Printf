@@ -6,32 +6,32 @@
 #    By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 17:02:45 by andcarva          #+#    #+#              #
-#    Updated: 2024/11/06 14:11:00 by andcarva         ###   ########.fr        #
+#    Updated: 2024/11/07 18:40:13 by andcarva         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME= libftprintf.a
-CC= cc
-CFLAGS= -Wall -Wextra -Werror -g
-LIBFT_DIR= libft
-INCLUDE_DIR= includes
-SRC_DIR= src
-OBJ_DIR= obj
+NAME=libftprintf.a
+CC=cc
+CFLAGS=-Wall -Wextra -Werror -g -I $(LIBFT_DIR)
+LIBFT_DIR=/home/andcarva/Documents/CommonCore/Printf/libft
+SRC_DIR=src
+OBJ_DIR=obj
 OBJ= $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 SRC= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
-SRC_FILES= ft_printf.c ft_printf_rules.c ft_ptf_func.c ft_ptf_hexfunc.c \
-			ft_ptf_decfunc.c \
+SRC_FILES= ft_printf.c ft_ptf_func.c ft_ptf_hexfunc.c ft_ptf_decfunc.c \
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	echo "Creating library $(NAME)"
+$(NAME): Libft $(OBJ_DIR) $(OBJ)
+	@ar rcs $@ $(OBJ)
+	
+Libft:
 	@make -C $(LIBFT_DIR)
-	@ar rcs $@ $?
-
-%.o: %.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I $(INCLUDE_DIR) -c $< -o $@
+	@make bonus -C $(LIBFT_DIR)
+	
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)

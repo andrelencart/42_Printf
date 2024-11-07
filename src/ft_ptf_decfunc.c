@@ -6,7 +6,7 @@
 /*   By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:09:34 by andcarva          #+#    #+#             */
-/*   Updated: 2024/11/06 18:38:41 by andcarva         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:39:19 by andcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_unitoa(unsigned int n)
 	unsigned int	len;
 	char			*str;
 
-	len = ft_length(n);
+	len = ft_ulength(n);
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);

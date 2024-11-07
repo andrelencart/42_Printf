@@ -6,7 +6,7 @@
 /*   By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:49:25 by andcarva          #+#    #+#             */
-/*   Updated: 2024/11/06 18:48:18 by andcarva         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:39:21 by andcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stddef.h>
 # include <limits.h>
 # include <string.h>
+# include <stdint.h>
 
 # define HEX_LB "0123456789abcdef"
 # define HEX_UPB "0123456789ABCDEF"
