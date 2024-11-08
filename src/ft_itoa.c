@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ptf_decfunc.c                                   :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:09:34 by andcarva          #+#    #+#             */
-/*   Updated: 2024/11/08 18:49:04 by andcarva         ###   ########.fr       */
+/*   Created: 2024/10/30 17:44:04 by andcarva          #+#    #+#             */
+/*   Updated: 2024/11/08 18:50:46 by andcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_put_nbr_tf(int nbr)
+static int	ft_length(long n)
 {
-	int		len;
-	char	*num;
+	long	len;
 
 	len = 0;
-	num = ft_itoa(nbr);
-	len = ft_putstrtf(num);
-	free (num);
-	return (len);
-}
-
-int	ft_ulength(unsigned int n)
-{
-	unsigned int	len;
-
-	len = 0;
+	if (n < 0)
+	{
+		len++;
+		n = -n;
+	}
 	if (n == 0)
 		n++;
 	while (n != 0)
@@ -39,39 +32,38 @@ int	ft_ulength(unsigned int n)
 	return (len);
 }
 
-char	*ft_unitoa(unsigned int n)
+char	*ft_itoa(int n)
 {
-	unsigned int	len;
-	char			*str;
+	long	len;
+	long	nbr;
+	char	*str;
 
-	len = ft_ulength(n);
+	nbr = n;
+	len = ft_length(nbr);
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
 	str[len] = '\0';
-	if (n == 0)
+	if (nbr == 0)
 		str[0] = '0';
-	while (n != 0)
+	if (nbr < 0)
 	{
-		str[--len] = (n % 10) + '0';
-		n /= 10;
+		str[0] = '-';
+		nbr = -nbr;
+	}
+	while (len >= 0 && nbr > 0)
+	{
+		str[--len] = (nbr % 10) + '0';
+		nbr /= 10;
 	}
 	return (str);
 }
 
-int	ft_put_un_nbr(unsigned int n)
-{
-	int		len;
-	char	*num;
-
-	len = 0;
-	if (n == 0)
-		len = ft_putchartf('0');
-	if (n != 0)
-	{
-		num = ft_unitoa(n);
-		len = ft_putstrtf(num);
-		free(num);
-	}
-	return (len);
-}
+/* int main() {
+    long number = 2147483647;
+    char *str = ft_itoa(number);
+    if (str) {
+        printf("String representation of %ld is %s\n", number, str);
+    }
+    return 0;
+} */

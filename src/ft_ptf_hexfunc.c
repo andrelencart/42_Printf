@@ -6,25 +6,24 @@
 /*   By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:55:45 by andcarva          #+#    #+#             */
-/*   Updated: 2024/11/07 16:38:57 by andcarva         ###   ########.fr       */
+/*   Updated: 2024/11/08 19:22:34 by andcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
-int	ft_putnbrbase(unsigned int nbr, char *base)
+int	ft_put_nbr_base(unsigned int nbr, char *base)
 {
-	int		result;
-	int		len;
-	char	c;
+	unsigned int	result;
+	size_t			len;
+	char			c;
 
 	result = 0;
 	len = ft_strlen(base);
-	if (nbr >= 10)
+	if (nbr >= len)
 	{
-		result = ft_putnbrbase(nbr / len, base);
-		result = ft_putnbrbase(nbr % len, base);
+		result += ft_put_nbr_base(nbr / len, base);
+		result += ft_put_nbr_base(nbr % len, base);
 	}
 	else
 	{
@@ -34,18 +33,18 @@ int	ft_putnbrbase(unsigned int nbr, char *base)
 	return (result);
 }
 
-int	ft_putnbrptr(uintptr_t nbr, char *base)
+int	ft_put_nbr_ptr(uintptr_t nbr, char *base)
 {
-	int		result;
-	int		len;
-	char	c;
+	unsigned int		result;
+	size_t				len;
+	char				c;
 
 	result = 0;
 	len = ft_strlen(base);
-	if (nbr >= 10)
+	if (nbr >= len)
 	{
-		result = ft_putnbrptr(nbr / len, base);
-		result = ft_putnbrptr(nbr % len, base);
+		result += ft_put_nbr_ptr(nbr / len, base);
+		result += ft_put_nbr_ptr(nbr % len, base);
 	}
 	else
 	{
@@ -55,17 +54,17 @@ int	ft_putnbrptr(uintptr_t nbr, char *base)
 	return (result);
 }
 
-int	ft_putptr(uintptr_t ptr)
+int	ft_put_ptr(uintptr_t ptr)
 {
 	int	print;
 
 	print = 0;
 	if (!ptr)
-		print = ft_putstrtf("(null)");
+		print += write(1, "(nil)", 5);
 	else
 	{
 		print += write(1, "0x", 2);
-		print += ft_putnbrptr(ptr, HEX_LB);
+		print += ft_put_nbr_ptr(ptr, HEX_LB);
 	}
 	return (print);
 }
