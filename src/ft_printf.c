@@ -6,7 +6,7 @@
 /*   By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:10:31 by andcarva          #+#    #+#             */
-/*   Updated: 2024/11/08 19:28:17 by andcarva         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:41:17 by andcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_printf(const char *str, ...)
 		return (-1);
 	while (str[i])
 	{
-		if (str[i] == '%')
+		if (str[i] == '%' && str[i + 1])
 		{
 			print += ft_printf_rules(str[i + 1], arg);
 			i++;
