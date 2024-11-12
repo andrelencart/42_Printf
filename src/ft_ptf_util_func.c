@@ -6,7 +6,7 @@
 /*   By: andcarva <andcarva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:44:04 by andcarva          #+#    #+#             */
-/*   Updated: 2024/11/08 18:50:46 by andcarva         ###   ########.fr       */
+/*   Updated: 2024/11/11 13:19:25 by andcarva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,16 @@ char	*ft_itoa(int n)
 		nbr /= 10;
 	}
 	return (str);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	len;
+
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
 }
 
 /* int main() {
